@@ -46,11 +46,12 @@ void swap_insert(listint_t **llist, listint_t **current, listint_t *node)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp = *list;
+	listint_t *tmp = NULL;
 	listint_t  *next = NULL;
 
-	if (!*list || !(*list)->next)
+	if (!list || !*list || !(*list)->next)
 		return;
+	tmp = *list;
 	while (tmp)
 	{
 		next = tmp->next;
