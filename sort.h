@@ -1,6 +1,5 @@
 #ifndef __SORT_H_
 #define __SORT_H_
-#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -22,4 +21,5 @@ void insertion_sort_list(listint_t **list);
  void quick_sort(int *array, size_t size);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+void shell_sort(int *array, size_t size);
 #endif

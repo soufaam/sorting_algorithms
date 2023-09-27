@@ -9,15 +9,14 @@
  * @hi: the size
  * Return: success
  */
-size_t partionate(int *array, size_t lo, size_t hi)
+size_t partionate(int *array, size_t start, size_t end, size_t size)
 {
 	int pivot;
 	size_t i, j, swap;
 
-	i = lo - 1;
-	printf("->%lu \n", hi);
-	pivot = array[hi];
-	for (j = lo ; j < hi + 1; j++)
+	i = start;
+	pivot = array[end];
+	for (j = start ; j < end + 1; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -25,13 +24,13 @@ size_t partionate(int *array, size_t lo, size_t hi)
 			array[j] = array[i];
 			array[i] = swap;
 			i++;
-			print_array(array, hi + 1);
+			print_array(array, size);
 		}
 	}
-	swap = array[i + 1];
-	array[i + 1] = array[hi];
-	array[hi] = swap;
-	return (i + 1);
+	swap = array[i];
+	array[i] = pivot;
+	array[end] = swap;
+	return (i);
 }
 
 /**
@@ -43,17 +42,17 @@ size_t partionate(int *array, size_t lo, size_t hi)
  * Return: success
  */
 
-void _sort_quick(int *array, size_t lo, size_t hi)
+void _sort_quick(int *array, size_t lo, size_t hi, size_t size)
 {
 	size_t part;
 
 	if (lo < hi)
 	{
-		part = partionate(array, lo, hi);
-		_sort_quick(array, lo, part - 1);
-		_sort_quick(array, part + 1, hi);
+	part = partionate(array, lo, hi, size);
+	if (part)
+		_sort_quick(array, lo, part - 1, size);
+	_sort_quick(array, part + 1, hi, size);
 	}
-
 }
 /**
  * quick_sort - Prints an array of integers
@@ -63,5 +62,5 @@ void _sort_quick(int *array, size_t lo, size_t hi)
  */
 void quick_sort(int *array, size_t size)
 {
-	_sort_quick(array, 0, size - 1);
+	_sort_quick(array, 0, size - 1, size);
 }
