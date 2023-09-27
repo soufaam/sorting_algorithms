@@ -5,8 +5,9 @@
  * partionate - Prints an array of integers
  *
  * @array: The array to be printed
- * @lo: Number of elements in @array
- * @hi: the size
+ * @start: Number of elements in @array
+ * @end: the size
+ * @size: the size of array
  * Return: success
  */
 size_t partionate(int *array, size_t start, size_t end, size_t size)
@@ -39,6 +40,7 @@ size_t partionate(int *array, size_t start, size_t end, size_t size)
  * @array: The array to be printed
  * @lo: Number of elements in @array
  * @hi: the size
+ * @size: the size of array
  * Return: success
  */
 
