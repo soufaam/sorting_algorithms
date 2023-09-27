@@ -25,12 +25,12 @@ size_t partionate(int *array, size_t start, size_t end, size_t size)
 			array[j] = array[i];
 			array[i] = swap;
 			i++;
-			print_array(array, size);
 		}
 	}
 	swap = array[i];
 	array[i] = pivot;
 	array[end] = swap;
+	print_array(array, size);
 	return (i);
 }
 
@@ -53,6 +53,8 @@ void _sort_quick(int *array, size_t lo, size_t hi, size_t size)
 	part = partionate(array, lo, hi, size);
 	if (part)
 		_sort_quick(array, lo, part - 1, size);
+	else
+		_sort_quick(array, lo, part, size);
 	_sort_quick(array, part + 1, hi, size);
 	}
 }
